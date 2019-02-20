@@ -44,7 +44,7 @@ const chartData2 = () => {
 // Pie chart data
 const chartData3 = () => {
     return {
-    labels:['Pumpkins','Weed', 'PRS Guitars', 'Dog Memes', 'Rashguards', 'Coca Cola'],
+    labels:['Pumpkins','Tomacco', 'Animotion', 'Trans-Atlantic Zepplin', "Congreve's Inflammable Powders", 'US Hay'],
     datasets:[{
         label:'Shares',
         data:[
