@@ -1,13 +1,13 @@
 {
-  "main.css": "/stockdash/static/css/main.4b3a9a28.chunk.css",
-  "main.js": "/stockdash/static/js/main.41fbb90b.chunk.js",
-  "main.js.map": "/stockdash/static/js/main.41fbb90b.chunk.js.map",
+  "main.css": "/stockdash/static/css/main.9c01f86c.chunk.css",
+  "main.js": "/stockdash/static/js/main.72d9f9d1.chunk.js",
+  "main.js.map": "/stockdash/static/js/main.72d9f9d1.chunk.js.map",
   "runtime~main.js": "/stockdash/static/js/runtime~main.f389304a.js",
   "runtime~main.js.map": "/stockdash/static/js/runtime~main.f389304a.js.map",
-  "static/js/2.a5caa88e.chunk.js": "/stockdash/static/js/2.a5caa88e.chunk.js",
-  "static/js/2.a5caa88e.chunk.js.map": "/stockdash/static/js/2.a5caa88e.chunk.js.map",
+  "static/js/2.4aac0006.chunk.js": "/stockdash/static/js/2.4aac0006.chunk.js",
+  "static/js/2.4aac0006.chunk.js.map": "/stockdash/static/js/2.4aac0006.chunk.js.map",
   "index.html": "/stockdash/index.html",
-  "precache-manifest.809c64ef820908037e3f40bdeb4b50fa.js": "/stockdash/precache-manifest.809c64ef820908037e3f40bdeb4b50fa.js",
+  "precache-manifest.a2a389b10f017fdb241cc9b302e4a8f4.js": "/stockdash/precache-manifest.a2a389b10f017fdb241cc9b302e4a8f4.js",
   "service-worker.js": "/stockdash/service-worker.js",
-  "static/css/main.4b3a9a28.chunk.css.map": "/stockdash/static/css/main.4b3a9a28.chunk.css.map"
+  "static/css/main.9c01f86c.chunk.css.map": "/stockdash/static/css/main.9c01f86c.chunk.css.map"
 }
