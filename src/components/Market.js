@@ -64,7 +64,7 @@ class Market extends Component {
                 <div style={title}>
                     <div style={subHeading}>Individual Stock Info At A Glance</div>
                     <div style={heading}>Current Values</div>
-                    <div><input ref={this.stock} style={searchBar} placeholder='Enter Stock...'></input></div>
+                    <div><input ref={this.stock} style={searchBar} placeholder='Enter Symbol...'></input></div>
                 </div>
 
                 
