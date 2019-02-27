@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Stockstats from './Stockstats';
+import Stocksearch from './Stocksearch';
 
 // Alpha Vantage API Key -  X22KEUCYAWJWZLZ2
 // https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=MSFT&interval=5min&apikey=demo
 
 let symbol;
-let currentData;
 
 class Market extends Component {
     constructor(props) {
@@ -16,7 +16,9 @@ class Market extends Component {
             open: '',
             high: '',
             low: '',
-            close: ''
+            price: '',
+            volume: '',
+            prevClose: ''
         }
         this.searchStock = this.searchStock.bind(this);
         this.stock = React.createRef();
@@ -29,27 +31,31 @@ class Market extends Component {
     searchStock(event) {
       if (event.keyCode === 13) {  
         symbol = this.stock.current.value;
-        const url = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=' + symbol + '&outputsize=compact&interval=5min&apikey=X22KEUCYAWJWZLZ2'
+        const url = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=' + symbol + '&apikey=X22KEUCYAWJWZLZ2'
         let stockData;
         
         fetch(url).then(response => {
             return response.json();
         }).then(data => {
-            stockData = data['Time Series (5min)'];
+            stockData = data['Global Quote'];
         }).then(() => {
-            currentData = stockData[Object.keys(stockData)[0]];
-        }).then(() => {
-            let open = currentData['1. open'];
-            let high = currentData['2. high'];
-            let low = currentData['3. low'];
-            let close = currentData['4. close'];
+            console.log(stockData);
+            let open = stockData[Object.keys(stockData)[1]];
+            let high = stockData[Object.keys(stockData)[2]];
+            let low = stockData[Object.keys(stockData)[3]];
+            let price = stockData[Object.keys(stockData)[4]];
+            let volume = stockData[Object.keys(stockData)[5]];
+            let previousClose = stockData[Object.keys(stockData)[7]];
+            const isHidden = this.state.isHidden === true ? false : false;
             this.setState({
                 symbol: symbol, 
                 open: open, 
                 high: high, 
                 low: low, 
-                close: close, 
-                isHidden: !this.state.isHidden })
+                price: price,
+                volume: volume,
+                prevClose: previousClose, 
+                isHidden: isHidden })
         }).catch(err => {
             console.log(err);
         });
@@ -60,21 +66,28 @@ class Market extends Component {
 
     render() {
         return(
-            <div style={mainSpace}>
-                <div style={title}>
-                    <div style={subHeading}>Individual Stock Info At A Glance</div>
-                    <div style={heading}>Current Values</div>
-                    <div><input ref={this.stock} style={searchBar} placeholder='Enter Symbol...'></input></div>
-                </div>
+            <div style={mainspace}>
+                <div style={stockstats}>
+                    <div style={title}>
+                        <div style={subHeading}>Individual Stock Info At A Glance</div>
+                        <div style={heading}>Current Values</div>
+                        <div><input ref={this.stock} style={searchBar} placeholder='Enter Symbol...'></input></div>
+                    </div>
 
+                    
+                    {!this.state.isHidden && <Stockstats 
+                            symbol={this.state.symbol} 
+                            open={this.state.open} 
+                            high={this.state.high} 
+                            low={this.state.low} 
+                            price={this.state.price} 
+                            volume={this.state.volume} 
+                            prevClose={this.state.prevClose}
+                            />}
+                </div>
                 
-                {!this.state.isHidden && <Stockstats 
-                        symbol={this.state.symbol} 
-                        open={this.state.open} 
-                        high={this.state.high} 
-                        low={this.state.low} 
-                        close={this.state.close} />}
-                
+                <Stocksearch />
+
             </div>
         );
     }
@@ -82,13 +95,20 @@ class Market extends Component {
     
 }
 
-const mainSpace = {
+const mainspace = {
     display: 'flex',
     flexDirection: 'column',
+    flexGrow: '0',
+    width: '84%'
+}
+
+const stockstats = {
+    display: 'flex',
+    flexDirection: 'column',
+    flexGrow: '0',
     alignItems: 'center',
     backgroundImage: 'linear-gradient(#1d283a, #223047)',
     width: '100%',
-    height: 'auto',
     textAlign: 'center',
     color: 'white',
     margin: '15px',

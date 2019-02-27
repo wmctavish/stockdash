@@ -7,14 +7,16 @@ class Stockstats extends Component {
             <div style={summary}>
                 <div style={statsStyle}>
                     <p style={symbolHeading}>Summary for {this.props.symbol}</p>
-                    <p style={subSymbol}>Accurate within 5min or less</p>
+                    <p style={subSymbol}>Accurate within 1min or less</p>
                 </div>
 
                 <div style={stats}>
                     <div style={detail}>OPEN: <div style={open}>{this.props.open}</div></div>
                     <div style={detail}>HIGH: <div style={high}>{this.props.high}</div></div>
                     <div style={detail}>LOW: <div style={low}>{this.props.low}</div></div>
-                    <div style={detail}>CLOSE: <div style={open}>{this.props.close}</div></div>
+                    <div style={detail}>PRICE: <div style={open}>{this.props.price}</div></div>
+                    <div style={detail}>VOLUME: <div style={open}>{this.props.volume}</div></div>
+                    <div style={detail}>PREVIOUS CLOSE: <div style={open}>{this.props.prevClose}</div></div>
                 </div>
             </div>
         );
@@ -23,35 +25,42 @@ class Stockstats extends Component {
 
 const summary = {
     width: '100%',
-    alignItems: 'center'
+    justifyContent: 'center'
 }
 
 const stats = {
     marginRight: '30%',
     marginLeft: '30%',
     fontFamily: 'Roboto, sans-serif',
-    fontWeight: '300'
+    fontWeight: '300',
 }
 
 const detail = {
+    width: '50%',
     display: 'flex',
-    justifyContent: 'center',
-    textAlign: 'center',
-    marginBottom: '20px'
+    justifyContent: 'left',
+    textAlign: 'left',
+    marginBottom: '20px',
 }
 
 const open = {
-    marginLeft: '60px'
+    width: '100%',
+    marginLeft: '60px',
+    textAlign: 'right',
 }
 
 const high = {
+    width: '100%',
     marginLeft: '60px',
-    color: 'green'
+    color: 'green',
+    textAlign: 'right',
 }
 
 const low = {
+    width: '100%',
     marginLeft: '60px',
-    color: 'red'
+    color: 'red',
+    textAlign: 'right',
 }
 
 const statsStyle = {

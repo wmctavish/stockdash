@@ -8,16 +8,29 @@ class SidebarItem extends Component {
                 padding: '15px',
                 cursor: 'pointer',
                 fontFamily: 'Roboto, sans-serif',
-                fontWeight: '100',
-                borderBottom: '1px solid rgba(255,255,255,0.2)',
-                borderWidth: '80%'
+                fontWeight: '100'
             };
         }
 
     render() {
-        return <p style={this.getStyle()} onClick={this.props.showView}>{ this.props.page.name }</p>
-        ;
+        return (
+            <div style={container}>
+                <img style={iconStyle} src={this.props.page.imgsrc}></img>
+                <p style={this.getStyle()} onClick={this.props.showView}>{ this.props.page.name }</p>
+            </div>
+        )
     }
+}
+
+const container = {
+    display: 'flex',
+    borderBottom: '1px solid rgba(255,255,255,0.2)'
+}
+
+const iconStyle = {
+    marginTop: '18px',
+    width: '25%',
+    height: '25%'
 }
 
 // PropTypes

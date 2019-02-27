@@ -17,14 +17,17 @@ class App extends Component {
         {
             id: 1,
             name: 'Main',
+            imgsrc: 'MainDisplay.png'
         },
         {
             id: 2,
             name: 'Trade',
+            imgsrc: 'Trade.png'
         },
         {
             id: 3,
-            name: 'Market'
+            name: 'Market',
+            imgsrc: 'Market.png'
         }
     ],
             view: Main
@@ -34,7 +37,6 @@ class App extends Component {
  
   
   showView = (page) => {
-    console.log(page);
     if (page.id === 1) {
       this.setState({ view: Main })
     };
