@@ -1,6 +1,45 @@
 import React, { Component } from 'react';
 
+let search;
+
 class Stocksearch extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            suggestionName: '',
+            suggestionSymbol: ''
+        }
+        this.searchStock = this.searchStock.bind(this);
+        this.stock = React.createRef();
+        this.suggestions = React.createRef();
+    }
+
+    componentDidMount() {
+        this.stock.current.addEventListener("keydown", this.searchStock);
+    }
+
+    searchStock() {
+        search = this.stock.current.value;
+        const url = 'https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=' + search + '&apikey=X22KEUCYAWJWZLZ2'
+        let stockData;
+        let symbol;
+        let names;
+        fetch(url).then(response => {
+            return response.json();
+        }).then(data => {
+            stockData = data['bestMatches'];
+        }).then(() => {
+            console.log(stockData);
+            symbol = stockData[Object.keys(stockData)[0]];
+            names = stockData[Object.keys(stockData)[0]];
+            this.setState({
+                suggestionName: 'Name: '+names[Object.keys(names)[1]],
+                suggestionSymbol: 'Symbol: '+symbol[Object.keys(symbol)[0]] })
+        }).catch(err => {
+            console.log(err);
+        });
+    }
+    
     render() {
         return (
             <div style={stocksearch}>
@@ -8,6 +47,11 @@ class Stocksearch extends Component {
                     <div style={subHeading}>Search for best-matching Symbols/Companies</div>
                     <div style={heading}>Search Stocks</div>
                     <div><input ref={this.stock} style={searchBar} placeholder='Search Symbol...'></input></div>
+
+                    <div ref={this.suggestions} style={results}>
+                        <p style={suggestion}>{this.state.suggestionName}</p>
+                        <p style={suggestion}>{this.state.suggestionSymbol}</p>
+                    </div>
                 </div>
             </div>
         )
@@ -17,10 +61,11 @@ class Stocksearch extends Component {
 const stocksearch = {
     display: 'flex',
     flexDirection: 'column',
+    flexGrow: '0',
     alignItems: 'center',
     backgroundImage: 'linear-gradient(#1d283a, #223047)',
     width: '100%',
-    height: '200px',
+    height: 'auto',
     textAlign: 'center',
     color: 'white',
     margin: '15px',
@@ -57,5 +102,20 @@ const searchBar = {
     margin: '15px'
 }
 
+const results = {
+    display: 'flex',
+    flexDirection: 'column',
+    flexGrow: '0',
+    width: '100%',
+    height: 'auto',
+    fontSize: '30px',
+    fontFamily: 'Roboto, sans-serif',
+    textAlign: 'center',
+    margin: '15px'
+}
+
+const suggestion = {
+    marginBottom: '5px'
+}
 
 export default Stocksearch;

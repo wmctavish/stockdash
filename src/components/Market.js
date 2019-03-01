@@ -97,7 +97,7 @@ class Market extends Component {
 
 const mainspace = {
     display: 'flex',
-    flexDirection: 'column',
+    //flexDirection: 'column',
     flexGrow: '0',
     width: '84%'
 }
@@ -109,6 +109,7 @@ const stockstats = {
     alignItems: 'center',
     backgroundImage: 'linear-gradient(#1d283a, #223047)',
     width: '100%',
+    height: 'auto',
     textAlign: 'center',
     color: 'white',
     margin: '15px',

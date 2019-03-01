@@ -36,8 +36,8 @@ code {
   margin-right: 5px;
 }
 
-@media (max-width: 960px) {
-    body {
+@media (max-width: 320px) {
+    #root {
       width: auto;
     }
 }
