@@ -19,14 +19,4 @@ Sidebar.propTypes = {
     views: PropTypes.array.isRequired
 }
 
-const sidebarStyle = {
-    backgroundImage: 'linear-gradient(#0f63ff, #2679ff)',
-    textAlign: 'left',
-    color: 'white',
-    height: '80%',
-    width: '150px',
-    margin: '10px',
-    borderRadius: '5px'
-}
-
 export default Sidebar;

@@ -29,36 +29,37 @@ const summary = {
 }
 
 const stats = {
-    marginRight: '30%',
-    marginLeft: '30%',
+    marginRight: '40%',
+    marginLeft: '40%',
     fontFamily: 'Roboto, sans-serif',
     fontWeight: '300',
-}
+    justifyContent: 'center'
+}   
 
 const detail = {
-    width: '50%',
+    width: '100%',
     display: 'flex',
-    justifyContent: 'left',
+    justifyContent: 'space-evenly',
     textAlign: 'left',
     marginBottom: '20px',
 }
 
 const open = {
     width: '100%',
-    marginLeft: '60px',
+    marginLeft: '0px',
     textAlign: 'right',
 }
 
 const high = {
     width: '100%',
-    marginLeft: '60px',
+    marginLeft: '0px',
     color: 'green',
     textAlign: 'right',
 }
 
 const low = {
     width: '100%',
-    marginLeft: '60px',
+    marginLeft: '0px',
     color: 'red',
     textAlign: 'right',
 }

@@ -37,7 +37,7 @@ class Trade extends Component {
             currentBuyPrice = stockData[Object.keys(stockData)[4]];
         }).then(() => {
             let totalBuy = buyingSha * currentBuyPrice;
-            this.setState({ buySummary: 'Buy '+buyingSha+' shares of '+buyingSym+' at $'+currentBuyPrice+' per share.'})
+            this.setState({ buySummary: 'Buy '+buyingSha+' shares of '+buyingSym.toUpperCase()+' at $'+currentBuyPrice+' per share.'})
             this.setState({ buyTot: 'TOTAL: $'+totalBuy.toLocaleString('en') })
         }).catch(err => {
             console.log(err);
@@ -60,7 +60,7 @@ class Trade extends Component {
             currentSellPrice = stockData[Object.keys(stockData)[4]];
         }).then(() => {
             let totalSell = sellingSha * currentSellPrice;
-            this.setState({ sellSummary: 'Sell '+sellingSha+' shares of '+sellingSym+' at $'+currentSellPrice+' per share.'})
+            this.setState({ sellSummary: 'Sell '+sellingSha+' shares of '+sellingSym.toUpperCase()+' at $'+currentSellPrice+' per share.'})
             this.setState({ sellTot: 'TOTAL: $'+totalSell.toLocaleString('en') })
         }).catch(err => {
             console.log(err);

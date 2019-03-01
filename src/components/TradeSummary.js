@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
+import './Trade.css';
 
 class TradeSummary extends Component {
-    /*
-    componentDidMount() {
-        this.props.buySumm  === '' ? /* Make confirm button greyed-out  : ''
-};   */
 
     render() {
+        
         return (
             <div style={summaryArea}>
 
@@ -16,15 +14,17 @@ class TradeSummary extends Component {
                     <div>
                     <p style={summary}>{this.props.buySumm}</p>
                     <p style={total}>{this.props.buyTotal}</p>
+                    <button style={cancelBuy}>Cancel Purchase</button>
                     </div>
 
                     <div>
                     <p style={summary}>{this.props.sellSumm}</p>
                     <p style={total}>{this.props.sellTotal}</p>
+                    <button style={cancelBuy}>Cancel Sale</button>
                     </div>
                 </div>
 
-                <div><button style={confirm}>CONFIRM</button></div>
+                <div><button class='confirm' onMouseOver={this.buttonHandler} >CONFIRM</button></div>
 
             </div>
         );
@@ -55,25 +55,11 @@ const total = {
     textAlign: 'center'
 }
 
-const confirm = {
-    backgroundImage: 'linear-gradient(#0f63ff, #6399ff)',
-    border: '1px solid black',
-    borderRadius: '5px',
-    boxShadow: '0 0 10px 1px black',
-    marginTop: '30px',
-    width: '210px',
-    height: '40px',
-    fontSize: '20px',
-    fontWeight: '300',
-    color: 'white',
-    cursor: 'pointer'
-}
-
 const lockedIn = {
     width: '100%',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
 }
 
 const h2s = {
@@ -82,6 +68,19 @@ const h2s = {
     marginBottom: '10px',
     marginTop: '0',
     width: '100%'
+}
+
+const cancelBuy = {
+    color: 'white',
+    borderRadius: '3px',
+    width: '100%',
+    height: '30px',
+    border: '1px solid #0f63ff',
+    backgroundColor:'#121823',
+    fontSize: '20px',
+    fontFamily: 'Roboto, sans-serif',
+    fontWeight: '100',
+    cursor: 'pointer'
 }
 
 export default TradeSummary;

@@ -29,8 +29,8 @@ const container = {
 
 const iconStyle = {
     marginTop: '18px',
-    width: '25%',
-    height: '25%'
+    width: '45px',
+    height: '45px'
 }
 
 // PropTypes

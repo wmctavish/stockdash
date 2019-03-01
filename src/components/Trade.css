@@ -1,0 +1,28 @@
+.confirm  {
+    background-image: linear-gradient(#0f63ff, #6399ff);
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 1px black;
+    margin-top: 30px;
+    width: 210px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: 300;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.confirm:hover {
+    background-image: linear-gradient(#6399ff, #ffffff);
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 1px rgb(255, 255, 255);
+    margin-top: 30px;
+    width: 210px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: 300;
+    color: #0f63ff;
+    cursor: pointer;
+}

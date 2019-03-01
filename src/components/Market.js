@@ -48,13 +48,13 @@ class Market extends Component {
             let previousClose = stockData[Object.keys(stockData)[7]];
             const isHidden = this.state.isHidden === true ? false : false;
             this.setState({
-                symbol: symbol, 
-                open: open, 
-                high: high, 
-                low: low, 
-                price: price,
+                symbol: symbol.toUpperCase(), 
+                open: '$'+open, 
+                high: '$'+high, 
+                low: '$'+low, 
+                price: '$'+price,
                 volume: volume,
-                prevClose: previousClose, 
+                prevClose: '$'+previousClose, 
                 isHidden: isHidden })
         }).catch(err => {
             console.log(err);
