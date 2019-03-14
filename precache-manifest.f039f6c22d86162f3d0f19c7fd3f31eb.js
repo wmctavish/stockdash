@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/stockdash/static/js/runtime~main.f389304a.js"
   },
   {
-    "revision": "36491c1b0717bb9a79ba",
-    "url": "/stockdash/static/js/main.36491c1b.chunk.js"
+    "revision": "1c459b43c70fc9a0cb45",
+    "url": "/stockdash/static/js/main.1c459b43.chunk.js"
   },
   {
     "revision": "f19100f74a6f424e8b7d",
     "url": "/stockdash/static/js/2.f19100f7.chunk.js"
   },
   {
-    "revision": "36491c1b0717bb9a79ba",
+    "revision": "1c459b43c70fc9a0cb45",
     "url": "/stockdash/static/css/main.9918de88.chunk.css"
   },
   {
-    "revision": "1b91095e1a47169ed0fbd98accd55a0f",
+    "revision": "bc76bee4be3d93aabd4cfdec4cbd622e",
     "url": "/stockdash/index.html"
   }
 ];
