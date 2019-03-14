@@ -71,7 +71,9 @@ class Market extends Component {
                     <div style={title}>
                         <div style={subHeading}>Individual Stock Info At A Glance</div>
                         <div style={heading}>Current Values</div>
-                        <div><input ref={this.stock} style={searchBar} placeholder='Enter Symbol...'></input></div>
+                        <div><input ref={this.stock} style={searchBar} placeholder='Enter Symbol...'></input>
+                        <button style={buttonStyle}>Search</button>
+                        </div>
                     </div>
 
                     
@@ -144,6 +146,19 @@ const searchBar = {
     fontFamily: 'Roboto, sans-serif',
     textAlign: 'center',
     margin: '15px'
+}
+
+const buttonStyle = {
+    color: 'white',
+    borderRadius: '3px',
+    width: '20%',
+    height: '30px',
+    border: '1px solid #0f63ff',
+    backgroundColor:'#121823',
+    fontSize: '20px',
+    fontFamily: 'Roboto, sans-serif',
+    fontWeight: '100',
+    cursor: 'pointer'
 }
 
 export default Market;

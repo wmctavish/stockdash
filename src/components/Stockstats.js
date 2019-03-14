@@ -29,8 +29,8 @@ const summary = {
 }
 
 const stats = {
-    marginRight: '40%',
-    marginLeft: '40%',
+    marginRight: '15%',
+    marginLeft: '15%',
     fontFamily: 'Roboto, sans-serif',
     fontWeight: '300',
     justifyContent: 'center'

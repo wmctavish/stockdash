@@ -18,12 +18,13 @@ class Stocksearch extends Component {
         this.stock.current.addEventListener("keydown", this.searchStock);
     }
 
-    searchStock() {
+    searchStock(enterKey) {
         search = this.stock.current.value;
         const url = 'https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=' + search + '&apikey=X22KEUCYAWJWZLZ2'
         let stockData;
         let symbol;
         let names;
+        if (enterKey.keyCode == 13) {
         fetch(url).then(response => {
             return response.json();
         }).then(data => {
@@ -38,7 +39,7 @@ class Stocksearch extends Component {
         }).catch(err => {
             console.log(err);
         });
-    }
+    }};
     
     render() {
         return (
@@ -46,7 +47,9 @@ class Stocksearch extends Component {
                 <div style={title}>
                     <div style={subHeading}>Search for best-matching Symbols/Companies</div>
                     <div style={heading}>Search Stocks</div>
-                    <div><input ref={this.stock} style={searchBar} placeholder='Search Symbol...'></input></div>
+                    <div><input ref={this.stock} style={searchBar} placeholder='Search Symbol...'></input>
+                    <button style={buttonStyle}>Search</button>
+                    </div>
 
                     <div ref={this.suggestions} style={results}>
                         <p style={suggestion}>{this.state.suggestionName}</p>
@@ -116,6 +119,19 @@ const results = {
 
 const suggestion = {
     marginBottom: '5px'
+}
+
+const buttonStyle = {
+    color: 'white',
+    borderRadius: '3px',
+    width: '20%',
+    height: '30px',
+    border: '1px solid #0f63ff',
+    backgroundColor:'#121823',
+    fontSize: '20px',
+    fontFamily: 'Roboto, sans-serif',
+    fontWeight: '100',
+    cursor: 'pointer'
 }
 
 export default Stocksearch;
