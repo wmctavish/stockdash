@@ -21,15 +21,20 @@ class Market extends Component {
             prevClose: ''
         }
         this.searchStock = this.searchStock.bind(this);
+        this.search = this.search.bind(this);
         this.stock = React.createRef();
     }
     
     componentDidMount() {
-        this.stock.current.addEventListener("keyup", this.searchStock);
+        this.stock.current.addEventListener("keyup", this.search);
     }
 
-    searchStock(event) {
-      if (event.keyCode === 13) {  
+    search(enterKey) {
+        if (enterKey.keyCode == 13) {
+            this.searchStock();
+    }};
+
+    searchStock() {  
         symbol = this.stock.current.value;
         const url = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=' + symbol + '&apikey=X22KEUCYAWJWZLZ2'
         let stockData;
@@ -60,7 +65,6 @@ class Market extends Component {
             console.log(err);
         });
     }
-    }
 
  
 
@@ -72,7 +76,7 @@ class Market extends Component {
                         <div style={subHeading}>Individual Stock Info At A Glance</div>
                         <div style={heading}>Current Values</div>
                         <div><input ref={this.stock} style={searchBar} placeholder='Enter Symbol...'></input>
-                        <button style={buttonStyle}>Search</button>
+                        <button style={buttonStyle} onClick={this.searchStock}>Search</button>
                         </div>
                     </div>
 

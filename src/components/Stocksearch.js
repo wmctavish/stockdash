@@ -10,21 +10,27 @@ class Stocksearch extends Component {
             suggestionSymbol: ''
         }
         this.searchStock = this.searchStock.bind(this);
+        this.search = this.search.bind(this);
         this.stock = React.createRef();
         this.suggestions = React.createRef();
     }
-
+    
     componentDidMount() {
-        this.stock.current.addEventListener("keydown", this.searchStock);
+        this.stock.current.addEventListener("keydown", this.search);
     }
+    
+    search(enterKey) {
+        if (enterKey.keyCode == 13) {
+            this.searchStock();
+    }};
 
-    searchStock(enterKey) {
+    searchStock() {
         search = this.stock.current.value;
         const url = 'https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=' + search + '&apikey=X22KEUCYAWJWZLZ2'
         let stockData;
         let symbol;
         let names;
-        if (enterKey.keyCode == 13) {
+        //if (enterKey.keyCode == 13) {
         fetch(url).then(response => {
             return response.json();
         }).then(data => {
@@ -39,7 +45,7 @@ class Stocksearch extends Component {
         }).catch(err => {
             console.log(err);
         });
-    }};
+    };
     
     render() {
         return (
@@ -48,7 +54,7 @@ class Stocksearch extends Component {
                     <div style={subHeading}>Search for best-matching Symbols/Companies</div>
                     <div style={heading}>Search Stocks</div>
                     <div><input ref={this.stock} style={searchBar} placeholder='Search Symbol...'></input>
-                    <button style={buttonStyle}>Search</button>
+                    <button style={buttonStyle} onClick={this.searchStock}>Search</button>
                     </div>
 
                     <div ref={this.suggestions} style={results}>
