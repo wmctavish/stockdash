@@ -3,6 +3,8 @@ import TradeSummary from './TradeSummary';
 
 let currentBuyPrice;
 let currentSellPrice;
+let totalSell = 0;
+let totalBuy = 0;
 
 class Trade extends Component {
     constructor(props) {
@@ -11,14 +13,20 @@ class Trade extends Component {
             buySummary: 'n/a',
             buyTot: '',
             sellSummary: 'n/a',
-            sellTot: ''
+            sellTot: '',
+            transSumHeader: '',
+            transactionSummary: ''
         }
         this.buyDetails = this.buyDetails.bind(this);
         this.sellDetails = this.sellDetails.bind(this);
+        this.cancelPurchase = this.cancelPurchase.bind(this);
+        this.cancelSale = this.cancelSale.bind(this);
+        this.confirmTrades = this.confirmTrades.bind(this);
         this.buySymbol = React.createRef();
         this.buyShares = React.createRef();
         this.sellSymbol = React.createRef();
         this.sellShares = React.createRef();
+        this.tradeConf = React.createRef();
     }
 
     buyDetails() {
@@ -36,9 +44,9 @@ class Trade extends Component {
         }).then(() => {
             currentBuyPrice = stockData[Object.keys(stockData)[4]];
         }).then(() => {
-            let totalBuy = buyingSha * currentBuyPrice;
-            this.setState({ buySummary: 'Buy '+buyingSha+' shares of '+buyingSym.toUpperCase()+' at $'+currentBuyPrice+' per share.'})
-            this.setState({ buyTot: 'TOTAL: $'+totalBuy.toLocaleString('en') })
+            totalBuy = buyingSha * currentBuyPrice;
+            this.setState({ buySummary: 'Buy '+buyingSha+' shares of '+buyingSym.toUpperCase()+' at $'+currentBuyPrice.toLocaleString('en', {maximumFractionDigits: 2, minimumFractionDigits: 2})+' per share.'})
+            this.setState({ buyTot: 'TOTAL: $'+totalBuy.toLocaleString('en', {maximumFractionDigits: 2, minimumFractionDigits: 2}) })
         }).catch(err => {
             console.log(err);
         });
@@ -59,13 +67,28 @@ class Trade extends Component {
         }).then(() => {
             currentSellPrice = stockData[Object.keys(stockData)[4]];
         }).then(() => {
-            let totalSell = sellingSha * currentSellPrice;
-            this.setState({ sellSummary: 'Sell '+sellingSha+' shares of '+sellingSym.toUpperCase()+' at $'+currentSellPrice+' per share.'})
-            this.setState({ sellTot: 'TOTAL: $'+totalSell.toLocaleString('en') })
+            totalSell = sellingSha * currentSellPrice;
+            this.setState({ sellSummary: 'Sell '+sellingSha+' shares of '+sellingSym.toUpperCase()+' at $'+currentSellPrice.toLocaleString('en', {maximumFractionDigits: 2, minimumFractionDigits: 2})+' per share.'})
+            this.setState({ sellTot: 'TOTAL: $'+totalSell.toLocaleString('en', {maximumFractionDigits: 2, minimumFractionDigits: 2}) })
         }).catch(err => {
             console.log(err);
         });
         
+    }
+
+    cancelPurchase() {
+        this.setState({ buySummary: 'n/a' });
+        this.setState({ buyTot: ''});
+    };
+
+    cancelSale() {
+        this.setState({ sellSummary: 'n/a' });
+        this.setState({ sellTot: ''});
+    };
+
+    confirmTrades() {
+        this.setState({ transSumHeader: 'Trade Totals:'})
+        this.setState({ transactionSummary: '$ '+(totalSell - totalBuy).toLocaleString('en', {maximumFractionDigits: 2, minimumFractionDigits: 2}) });
     }
 
     render() {
@@ -78,7 +101,16 @@ class Trade extends Component {
                     buyTotal={this.state.buyTot}
                     sellSumm={this.state.sellSummary} 
                     sellTotal={this.state.sellTot}
-                    />
+                    cancelPurchase={this.cancelPurchase}
+                    cancelSale={this.cancelSale}
+                    confirmTrades={this.confirmTrades}
+                    transSumHeader={this.state.transSumHeader}
+                    transactionSummary={this.state.transactionSummary}
+                />
+
+                <div ref={this.tradeConf} style={tradeConf}>
+
+                </div>
 
                 <div style={tradeArea}>
                 <div style={buySide}>
@@ -130,7 +162,9 @@ const section = {
 
 const tradeArea = {
     display: 'flex',
-    justifyContent: 'space-evenly'
+    justifyContent: 'space-evenly',
+    margin: '15px',
+    width: '100%'
 }
 
 const heading = {
@@ -198,7 +232,7 @@ const inputs = {
 const buyButton = {
     color: 'white',
     borderRadius: '3px',
-    width: '20%',
+    width: '120px',
     height: '30px',
     border: '1px solid #0f63ff',
     backgroundColor:'#121823',
@@ -206,6 +240,16 @@ const buyButton = {
     fontFamily: 'Roboto, sans-serif',
     fontWeight: '100',
     cursor: 'pointer'
+}
+
+let tradeConf = {
+    display: 'none',
+    width: '100%',
+    minHeight: '150px',
+    margin: '15px',
+    backgroundImage: 'linear-gradient(#1d283a, #223047)',
+    borderRadius: '5px',
+    transition: 'all 0.3s ease-in-out'
 }
 
 export default Trade;

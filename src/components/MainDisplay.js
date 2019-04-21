@@ -7,7 +7,7 @@ const chartData1 = () => {
     return {
         labels:['October','November', 'December', 'January', 'February', 'March', 'April'],
         datasets:[{
-            label:'Performance',
+            label:'Pumpkins',
             data:[
                 80,
                 94,
@@ -18,6 +18,66 @@ const chartData1 = () => {
                 88
             ],
             borderColor: '#0f63ff'
+        },{
+            label:'Tomacco',
+            data:[
+                70,
+                54,
+                79,
+                63,
+                93,
+                85,
+                72
+            ],
+            borderColor: '#4f88ff'
+        },{
+            label:'Animotion',
+            data:[
+                55,
+                99,
+                69,
+                83,
+                59,
+                41,
+                67
+            ],
+            borderColor: '#709fff'
+        },{
+            label:'Trans-Atlantic Zepplin',
+            data:[
+                105,
+                89,
+                49,
+                67,
+                83,
+                75,
+                56
+            ],
+            borderColor: '#87afff'
+        },{
+            label:"Congreve's Inflammable Powders",
+            data:[
+                75,
+                44,
+                101,
+                78,
+                55,
+                87,
+                98
+            ],
+            borderColor: '#9bbdff'
+        },{
+            label:"US Hay",
+            data:[
+                50,
+                104,
+                74,
+                98,
+                65,
+                47,
+                60
+            ],
+            borderColor: '#bcd3ff'
         }]
         };
     };

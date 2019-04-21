@@ -10,22 +10,27 @@ class TradeSummary extends Component {
 
                 <div style={h2s}>Locked-In Trades</div>
 
-                <div style={lockedIn}>
-                    <div>
+                <div style={tradeSum}>
+                
+                    <div class='buySum'>
                     <p style={summary}>{this.props.buySumm}</p>
                     <p style={total}>{this.props.buyTotal}</p>
-                    <button style={cancelBuy}>Cancel Purchase</button>
+                    <button style={cancelBuy} onClick={this.props.cancelPurchase}>Cancel Purchase</button>
                     </div>
 
-                    <div>
+                    <div class='summaryArea'>
+                        <div>{this.props.transSumHeader}</div>
+                        <div class='summaryAmnt'>{this.props.transactionSummary}</div>
+                        <button class='confirm' onMouseOver={this.buttonHandler} onClick={this.props.confirmTrades}>CONFIRM</button>
+                    </div>
+
+                    <div class='buySum'>
                     <p style={summary}>{this.props.sellSumm}</p>
                     <p style={total}>{this.props.sellTotal}</p>
-                    <button style={cancelBuy}>Cancel Sale</button>
+                    <button style={cancelBuy} onClick={this.props.cancelSale}>Cancel Sale</button>
                     </div>
+                
                 </div>
-
-                <div><button class='confirm' onMouseOver={this.buttonHandler} >CONFIRM</button></div>
-
             </div>
         );
     };
@@ -35,13 +40,19 @@ const summaryArea = {
     display: 'flex',
     flexDirection: 'column',
     backgroundImage: 'linear-gradient(#1d283a, #223047)',
-    width: '96%',
+    width: '100%',
     height: 'auto',
     alignItems: 'center',
     color: 'white',
     margin: '15px',
-    padding: '15px',
     borderRadius: '5px'
+}
+
+const tradeSum = {
+    display: 'grid',
+    gridTemplateColumns: 'auto auto auto',
+    width: '100%',
+    height: 'auto'
 }
 
 const summary = {
@@ -55,13 +66,6 @@ const total = {
     textAlign: 'center'
 }
 
-const lockedIn = {
-    width: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-}
-
 const h2s = {
     fontWeight: '100',
     fontSize: '35px',
@@ -73,14 +77,15 @@ const h2s = {
 const cancelBuy = {
     color: 'white',
     borderRadius: '3px',
-    width: '100%',
+    width: '180px',
     height: '30px',
     border: '1px solid #0f63ff',
     backgroundColor:'#121823',
     fontSize: '20px',
     fontFamily: 'Roboto, sans-serif',
     fontWeight: '100',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    marginBottom: '10px'
 }
 
 export default TradeSummary;

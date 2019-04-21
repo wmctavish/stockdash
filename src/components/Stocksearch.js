@@ -130,7 +130,7 @@ const suggestion = {
 const buttonStyle = {
     color: 'white',
     borderRadius: '3px',
-    width: '20%',
+    width: '120px',
     height: '30px',
     border: '1px solid #0f63ff',
     backgroundColor:'#121823',
